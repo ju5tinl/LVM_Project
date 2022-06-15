@@ -1,0 +1,89 @@
+Design Document
+
+Runner Class:
+Allow the user to do the following
+1) Install hard drives
+2) List drives
+3) Create physical volumes
+4) List physical volumes
+5) Create and extend volume groups
+6) List volume groups
+7) Create and extend logical volumes
+8) List logical volumes
+9) Exit
+
+Control superclass:
+
+private String name;
+private int size;
+private String uuid;
+
+public Control(String n, int s){
+Makes a Control superclass, containing information for subclasses HardDrive,
+   PhysicalVolume, VolumeGroup, and LogicalVolume subclasses. Including name n, size s, and uuid u.
+   }
+
+public String getName(){
+Returns the name of the object.
+}
+
+public String getSize(){
+Returns the drive size of the object.
+}
+
+public String getUuid(){
+Returns the uuid of the object.
+}
+
+public void start(){
+start the program and allow user to input values in
+}
+
+
+HD subclass:
+
+public HD(String name, int size){
+gives information about the hard drive to control class
+}
+
+PV subclass:
+
+private HD drive;
+
+public PV(String n, String u, HD h){
+gives information about the phyiscal volume to the control class
+}
+
+
+public boolean hdCheck( String  d){
+chekcs if they already set a hard drive to a physical drive
+}
+
+VG subclass:
+
+    private PV p;
+    private ArrayList<PV> pvStore = new ArrayList();
+    private ArrayList<LV> lvStore = new ArrayList();
+
+private VolumeGroup(String n, String u, PhysicalVolume p){
+set super constructor
+}
+
+
+ public boolean vgCheck(String l){
+ check if hard drive is in volume group
+ }
+
+
+LV subclass:
+
+private VG vol;
+
+
+private LogicalVolume(String n, int s, String u, VolumeGroup v){
+gets data from super class
+}
+
+ public boolean vgCheck(String v){
+    check volume group
+    }
